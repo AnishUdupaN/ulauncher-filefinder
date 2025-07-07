@@ -5,7 +5,7 @@ from ulauncher.api.client.EventListener import EventListener
 from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent, PreferencesEvent, PreferencesUpdateEvent
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
-from ulauncher.api.shared.action.CopyToClipboardAction import CopyToClipboardAction
+from ulauncher.api.shared.action.RunScriptAction import RunScriptAction
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 class ClipboardHistoryExtension(Extension):
     def __init__(self):
@@ -47,7 +47,7 @@ class KeywordQueryEventListener(EventListener):
                 icon=os.path.join(os.getcwd(),'images/icon.png'),
                 name=lines[i],
                 description="Click to Open",
-                on_enter=subprocess.run(['xdg-open', lines[i]])
+                on_enter=RunScriptAction(f'xdg-open "{lines[i]}"', [])
             ))
         num_entries = int(extension.preferences.get('num_entries', 10))
         return RenderResultListAction(items[:num_entries])
