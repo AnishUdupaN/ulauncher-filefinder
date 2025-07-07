@@ -80,12 +80,12 @@ class KeywordQueryEventListener(EventListener):
                     output = result.stdout.split('\n')
                     lines.extend(output)
 
-                items.append(ExtensionResultItem(
-                    icon=os.path.join(os.getcwd(),'images/icon.png'),
-                    name=f"filename : {filename}\npath : {search_path}",
-                    description="Click to Open",
-                    on_enter=RunScriptAction(f'xdg-open "{lines[i]}"', [])
-                ))
+            items.append(ExtensionResultItem(
+                icon=os.path.join(os.getcwd(),'images/icon.png'),
+                name=f"filename : {filename}\npath : {search_path}",
+                description="Click to Open",
+                on_enter=RunScriptAction(f'xdg-open "{lines[i]}"', [])
+            ))
             for i in range(len(lines)):
                 items.append(ExtensionResultItem(
                     icon=os.path.join(os.getcwd(),'images/icon.png'),
