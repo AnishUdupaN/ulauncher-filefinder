@@ -74,6 +74,7 @@ class KeywordQueryEventListener(EventListener):
 class CustomActionEventListener(EventListener):
     def on_event(self, event, extension):
         items = []
+        """
         stringinput = event.get_argument() or ""
         args = stringinput.strip().split(' in ')
         filename=args[0]
@@ -92,6 +93,13 @@ class CustomActionEventListener(EventListener):
                 description="Click to Open",
                 on_enter=RunScriptAction(f'xdg-open "{lines[i]}"', [])
             ))
+        """
+        items.append(ExtensionResultItem(
+            icon=os.path.join(os.getcwd(),'images/icon.png'),
+            name='hello',
+            description="Click to Open",
+            on_enter=RunScriptAction(f'xdg-open "{lines[i]}"', [])
+        ))
         num_entries = int(extension.preferences.get('num_entries', 10))
         return RenderResultListAction(items[:num_entries])
 
