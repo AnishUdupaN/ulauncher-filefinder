@@ -28,11 +28,13 @@ class PreferencesUpdateEventListener(EventListener):
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         items = []
-        query = event.get_argument() or ""
-
-        # Set the filename and path
-        filename = query
-        search_path =os.path.expanduser("~")  #change if the user gives additional path
+        stringinput = event.get_argument() or ""
+        args = stringinput.strip().split()
+        filename=args[0]
+        if len(args)==1:
+            search_path =os.path.expanduser("~")  #change if the user gives additional path
+        else:
+            search_path=args[1]
 
         # Run the fd command
         result = subprocess.run(['fd', filename, search_path], capture_output=True, text=True)
@@ -51,7 +53,7 @@ class KeywordQueryEventListener(EventListener):
             ))
         num_entries = int(extension.preferences.get('num_entries', 10))
         return RenderResultListAction(items[:num_entries])
-        
+
 
 if __name__ == '__main__':
     ClipboardHistoryExtension().run()
