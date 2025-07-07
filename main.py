@@ -80,6 +80,9 @@ class KeywordQueryEventListener(EventListener):
                     output = result.stdout.split('\n')
                     lines.extend(output)
 
+            with open("/home/anishudupan/logss.txt","a") as file:
+                file.write(f"given inputs:{filename} and {search_path}")
+                file.close()
 
             for i in range(len(lines)):
                 items.append(ExtensionResultItem(
