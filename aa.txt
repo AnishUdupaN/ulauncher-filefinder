@@ -1,0 +1,5 @@
+input: filename "in" foldername
+do a fd search to find that folder
+
+split in the following manner:
+    1st part : "in" : 2nd part
