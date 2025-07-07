@@ -27,6 +27,8 @@ class PreferencesUpdateEventListener(EventListener):
 
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
+        pass
+        """
         items = []
         query = event.get_argument() or ""
 
@@ -51,7 +53,7 @@ class KeywordQueryEventListener(EventListener):
             ))
         num_entries = int(extension.preferences.get('num_entries', 10))
         return RenderResultListAction(items[:num_entries])
-
+        """
 
 if __name__ == '__main__':
     ClipboardHistoryExtension().run()
