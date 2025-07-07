@@ -37,7 +37,7 @@ class KeywordQueryEventListener(EventListener):
         # Run the fd command
         result = subprocess.run(['fd', filename, search_path], capture_output=True, text=True)
         output = result.stdout
-        lines=output.split('\n')
+        lines = [line for line in output.split('\n') if line.strip()]
         for item in range(len(lines)-1):
             print(f"Item {item+1} : {lines[item]}")
 
