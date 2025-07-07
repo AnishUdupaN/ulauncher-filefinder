@@ -1,0 +1,22 @@
+{
+  "required_api_version": "^2.0.0",
+  "name": "FD search",
+  "description": "An extension to Search for files and directories.",
+  "developer_name": "Anish",
+  "icon": "images/icon.png",
+  "preferences": [
+    {
+      "id": "filesearch",
+      "type": "keyword",
+      "name": "File Search",
+      "default_value": "fd"
+    },
+    {
+      "id": "num_entries",
+      "type": "input",
+      "name": "Number of Entries",
+      "description": "Number of entries to show.",
+      "default_value": "10"
+    }
+  ]
+}
