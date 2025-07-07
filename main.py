@@ -67,18 +67,25 @@ class KeywordQueryEventListener(EventListener):
                 lines = [line for line in output.split('\n') if line.strip()]
             else:
                 search_path=args[1]
-                result = subprocess.run(['fd', search_path], capture_output=True, text=True)
+                result = subprocess.run(['fd', search_path,'/'], capture_output=True, text=True)
                 res = result.stdout.split('\n')
                 resfolders=[]
                 lines=[]
                 for line in res:
                     if not os.path.isfile(line):
                         resfolders.append(line)
-
                 for folder in resfolders:
                     result = subprocess.run(['fd', filename, folder], capture_output=True, text=True)
                     output = result.stdout.split('\n')
                     lines.extend(output)
+
+                flag=True
+                while flag:
+                    if '' in lines:
+                        lines.remove('')
+                    else:
+                        flag=False
+
 
             items.append(ExtensionResultItem(
                 icon=os.path.join(os.getcwd(),'images/icon.png'),
