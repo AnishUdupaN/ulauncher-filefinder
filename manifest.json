@@ -4,6 +4,9 @@
   "description": "An extension to Search for files and directories.",
   "developer_name": "Anish",
   "icon": "images/icon.png",
+    "options": {
+        "query_debounce": 0.5
+    },
   "preferences": [
     {
       "id": "filesearch",
