@@ -25,6 +25,16 @@ def command(filename,search_path):
             flag=False
     return lines
 
+def match_score(word, keyword):
+    """Calculate number of common letters between word and keyword."""
+    word_letters = set(word)
+    keyword_letters = set(keyword)
+    return len(word_letters & keyword_letters)
+
+def sort(words, keyword):
+    """Sort words based on match score in descending order."""
+    return sorted(words, key=lambda word: match_score(word, keyword), reverse=True)
+
 if __name__=="__main__":
     stringinput =input("Enter the string : ")
     args = stringinput.strip().split(' in ')
