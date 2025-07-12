@@ -33,7 +33,7 @@ class KeywordQueryEventListener(EventListener):
         if strininput=="" or stringinput==" ":
             items.append(ExtensionResultItem(
                 icon=os.path.join(os.getcwd(),'images/icon.png'),
-                name="Enter fillename or foldername to search,
+                name="Enter fillename or foldername to search",
                 on_enter=DoNothingAction()
             ))
         return RenderResultListAction(items[:1])
