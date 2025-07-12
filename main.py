@@ -43,10 +43,11 @@ class KeywordQueryEventListener(EventListener):
             lines=multi.command(filename,search_path)
             lines=multi.sort(lines,search_path+filename)
         for i in range(len(lines)):
+            parts = lines[i].rsplit("/", 1)  # Split from the right only once
             items.append(ExtensionResultItem(
                 icon=os.path.join(os.getcwd(),'images/icon.png'),
-                name=lines[i],
-                description="Click to Open",
+                name=parts[0],
+                description=f"In {parts[1]}",
                 on_enter=RunScriptAction(f'xdg-open "{lines[i]}"', [])
             ))
         num_entries = int(extension.preferences.get('num_entries', 10))
