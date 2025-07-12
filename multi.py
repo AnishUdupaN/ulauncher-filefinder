@@ -5,7 +5,8 @@ def command(filename,search_path):
         result = subprocess.run(['fd', filename, '/'], capture_output=True, text=True)
         output = result.stdout.split('\n')
         return output
-    result = subprocess.run(['fd', search_path,'/'], capture_output=True, text=True)
+    search_in =os.path.expanduser("~")
+    result = subprocess.run(['fd', search_path,search_in], capture_output=True, text=True)
     res = result.stdout.split('\n')
     resfolders=[]
     lines=[]
