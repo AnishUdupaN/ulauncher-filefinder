@@ -2,10 +2,10 @@ import subprocess
 import os
 def command(filename,search_path):
     if search_path=="anywhere":
-        result = subprocess.run(['fd', filename, '/',"--follow"], capture_output=True, text=True)
+        result = subprocess.run(['fd', filename, '/'], capture_output=True, text=True)
         output = result.stdout.split('\n')
         return output
-    result = subprocess.run(['fd', search_path,'/',"--follow"], capture_output=True, text=True)
+    result = subprocess.run(['fd', search_path,'/'], capture_output=True, text=True)
     res = result.stdout.split('\n')
     resfolders=[]
     lines=[]
