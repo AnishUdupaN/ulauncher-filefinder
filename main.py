@@ -47,8 +47,8 @@ class KeywordQueryEventListener(EventListener):
             print(f"parts : {parts}\n\n")  # Split from the right only once
             items.append(ExtensionResultItem(
                 icon=os.path.join(os.getcwd(),'images/icon.png'),
-                name=parts[0],
-                description=f"In {parts[1]}",
+                name=parts[1],
+                description=f"In {parts[0]}",
                 on_enter=RunScriptAction(f'xdg-open "{lines[i]}"', [])
             ))
         num_entries = int(extension.preferences.get('num_entries', 10))
