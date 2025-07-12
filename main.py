@@ -31,7 +31,8 @@ class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         items = []
         stringinput = event.get_argument() or ""
-        if strininput=="" or stringinput==" ":
+        print("Stringinput : '"+'\'')
+        if stringinput=="" or stringinput==" ":
             items.append(ExtensionResultItem(
                 icon=os.path.join(os.getcwd(),'images/icon.png'),
                 name="Enter fillename or foldername to search",
