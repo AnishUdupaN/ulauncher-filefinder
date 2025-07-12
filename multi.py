@@ -13,7 +13,7 @@ def command(filename,search_path):
         if not os.path.isfile(line):
             resfolders.append(line)
     for folder in resfolders:
-        result = subprocess.run(['fd', filename, folder,"--follow"], capture_output=True, text=True)
+        result = subprocess.run(['fd', filename, folder], capture_output=True, text=True)
         output = result.stdout.split('\n')
         lines.extend(output)
 
