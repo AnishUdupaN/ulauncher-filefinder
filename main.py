@@ -34,7 +34,7 @@ class KeywordQueryEventListener(EventListener):
         filename=args[0]
         if len(args)==1:
             search_path =os.path.expanduser("~")  #change if the user gives additional path
-            result = subprocess.run(['fd', filename, search_path], capture_output=True, text=True)
+            result = subprocess.run(['fd', filename, search_path,"--follow"], capture_output=True, text=True)
             output = result.stdout
             lines = [line for line in output.split('\n') if line.strip()]
             lines=multi.sort(lines,filename)
