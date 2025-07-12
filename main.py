@@ -43,7 +43,8 @@ class KeywordQueryEventListener(EventListener):
             lines=multi.command(filename,search_path)
             lines=multi.sort(lines,search_path+filename)
         for i in range(len(lines)):
-            parts = lines[i].rsplit("/", 1)  # Split from the right only once
+            parts = lines[i].rsplit("/", 1)
+            print(f"parts : {parts}\n\n")  # Split from the right only once
             items.append(ExtensionResultItem(
                 icon=os.path.join(os.getcwd(),'images/icon.png'),
                 name=parts[0],
