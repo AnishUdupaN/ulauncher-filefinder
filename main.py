@@ -6,7 +6,7 @@ from ulauncher.api.client.EventListener import EventListener
 from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent, PreferencesEvent, PreferencesUpdateEvent
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
-from ulauncher.api.shared.action.RunScriptAction import RunScriptAction
+from ulauncher.api.shared.action.RunScriptAction import RunScriptAction,DoNothingAction
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 class ClipboardHistoryExtension(Extension):
     def __init__(self):
@@ -30,6 +30,13 @@ class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         items = []
         stringinput = event.get_argument() or ""
+        if strininput=="" or stringinput==" ":
+            items.append(ExtensionResultItem(
+                icon=os.path.join(os.getcwd(),'images/icon.png'),
+                name="Enter fillename or foldername to search,
+                on_enter=DoNothingAction()
+            ))
+        return RenderResultListAction(items[:1])
         args = stringinput.strip().split(' in ')
         filename=args[0]
         if len(args)==1:
@@ -49,7 +56,7 @@ class KeywordQueryEventListener(EventListener):
             """if parts[1]=="":
                 parts[1]=parts[0].rsplit("/", 1)
             """
-            print(f"parts : {parts}\n\n")  # Split from the right only once
+            #print(f"parts : {parts}\n\n")  # Split from the right only once
             items.append(ExtensionResultItem(
                 icon=os.path.join(os.getcwd(),'images/icon.png'),
                 name=parts[1],
